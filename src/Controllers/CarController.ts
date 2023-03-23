@@ -41,9 +41,9 @@ class CarController {
   }
 
   public async getACar() {
-    const idCar = this.req.params.id;
+    const carId = this.req.params.id;
     try {
-      const car = await this.service.getACar(idCar);
+      const car = await this.service.getACar(carId);
       if (!car) return this.res.status(404).json({ message: 'Car not found' });
       return this.res.status(200).json(car);
     } catch (error) {

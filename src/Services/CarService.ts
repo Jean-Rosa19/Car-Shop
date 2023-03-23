@@ -24,21 +24,17 @@ class CarService {
   }
 
   public async getAllCars() {
-    const carOdm = new CarODM();
-    const cars = await carOdm.find();
+    const cars = await this.model.find();
     const carArray = cars.map((car) =>
       this.createCarDomain(car));
     return carArray;
   }
 
-  public async getACar(carId: string) {
-    const carOdm = new CarODM();
-    const car = await carOdm.findOne(carId);
-    if (!car) {
-      return null; 
-    }
-    const carResult = this.createCarDomain(car);
-    return carResult;
+  public async getACar(id: string) {
+    const car = await this.model.findOne(id);
+    if (!car) return null; 
+ 
+    return new Car(car);
   }
 }
 
