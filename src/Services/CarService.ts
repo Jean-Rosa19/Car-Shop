@@ -36,6 +36,12 @@ class CarService {
  
     return new Car(car);
   }
+
+  public async updateACar(idCar: string, data: ICar) {
+    const carUpdate = await this.model.update(idCar, data);
+    if (!carUpdate) return null;
+    return new Car(carUpdate);
+  }
 }
 
 export default CarService;
