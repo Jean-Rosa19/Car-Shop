@@ -13,7 +13,7 @@ class CarODM {
 
   constructor() {
     this.schema = new Schema<ICar>({
-      model: { type: String, required: true },
+      model: { type: String, required: true }, 
       year: { type: Number, required: true },
       color: { type: String, required: true },
       status: { type: Boolean, required: true, default: false },
@@ -38,7 +38,7 @@ class CarODM {
   }
 
   public async update(idCar:string, data: ICar) {
-    const car = this.model.findByIdAndUpdate(idCar, data, { new: true });
+    const car = this.model.findByIdAndUpdate(idCar, data, { new: true }); // new: true para retornar o documento atualizado
     return car;
   }
 }
