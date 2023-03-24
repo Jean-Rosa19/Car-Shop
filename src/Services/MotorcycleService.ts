@@ -22,6 +22,20 @@ class MotorcycleService {
     }
     return new Motorcycle(await this.model.create(motorcycle));
   }
+
+  public async findAll() {
+    const motorcycle = await this.model.find();
+    const motorcycleArray = motorcycle.map((motors) =>
+      this.createMotorcycleDomain(motors));
+    return motorcycleArray;
+  }
+
+  public async findOne(id: string) {
+    const motorcycle = await this.model.findOne(id);
+    if (!motorcycle) return null; 
+ 
+    return new Motorcycle(motorcycle);
+  }
 }
 
 export default MotorcycleService;
